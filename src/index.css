@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .accordion-icon {
+    @apply text-gray-500 transition-colors duration-200 group-hover:text-blue-500 group-data-[state=open]:text-blue-600;
+  }
+  
+  .custom-select {
+    @apply w-full py-2.5 px-4 appearance-none bg-white border border-gray-200 rounded-md text-gray-700 font-medium;
+    @apply bg-no-repeat pr-12;
+    @apply transition-all duration-200 hover:border-blue-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-position: right 10px center;
+    background-size: 20px;
+  }
+  
+  .option-group {
+    @apply text-gray-500 font-semibold uppercase text-xs py-1 px-2 cursor-default;
+    @apply bg-gray-50;
+  }
+
+  /* Countdown styles */
+  .countdown {
+    @apply flex items-center gap-4 justify-center;
+  }
+  
+  .countdown > div {
+    @apply relative text-center flex flex-col items-center;
+  }
+  
+  .countdown > div > span {
+    @apply text-2xl font-bold;
+  }
+  
+  .countdown > div > small {
+    @apply text-xs opacity-70 font-medium;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.25s ease-out forwards;
+}
+
+@keyframes slideDown {
+  from {
+    height: 0;
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    height: 0;
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+.animate-slideDown {
+  animation: slideDown 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: height, opacity, transform;
+}
+
+.animate-slideUp {
+  animation: slideUp 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: height, opacity, transform;
+}
